@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 변수 4 </title>
+    <style> 
+        p{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    
+    <script> 
+        let now = new Date() ; 
+        console.log(now);
+        let display = now.toLocaleDateString() ; 
+        let displayt = now.toTimeString() ; 
+        console.log(display);
+        document.write(` <p> 오늘의 날짜는 ${display} 입니다. </p> `) ;
+        document.write(` <p> 국제 시간은 ${displayt} 입니다. </p> `) ;
+        let displayTime = now.toLocaleTimeString() ; 
+        document.write(` <p> 지금 시간은 ${displayTime} 입니다. </p> `) ;
+        document.write(` <p> 오늘의 날짜는 ${display} , 현재 시각은 ${displayTime} 입니다. </p> `) ;
+    </script>
+</body>
+</html>
