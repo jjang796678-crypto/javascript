@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 조건문 4 </title>
+    <!-- <style>
+        #text{
+            color: red;
+        }
+    </style> -->
+</head>
+<body>
+    <!-- 로그인 상태 변경 -->
+    <button id="loginBtn"> 로그인 </button>
+    <p id="text"> 로그아웃 상태 </p>
+    <!-- 좋아요 버튼  -->
+    <button id="likebtn"> ♥좋아요 </button> 
+    <script> 
+        const btn = document.querySelector("#loginBtn") ; 
+        const text = document.querySelector("#text") ; 
+        // console.log(btn);
+        // 로그인 상태 
+        let isLogin = false ; 
+        // 로그인 상태 변경 함수 
+        btn.addEventListener("click" , function() {
+            // console.log("click");
+            if(isLogin){
+                // 로그인 상태 => 로그아웃 
+                isLogin = false ; 
+                text.textContent = "로그아웃 상태" ; 
+                btn.textContent = "로그인" ; 
+            }else{
+                // 로그아웃 상태 => 로그인 
+                isLogin = true ; 
+                text.textContent = "로그인 상태" ; 
+                btn.textContent = "로그아웃 " ; 
+            }
+        })
+        // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 좋아요 버튼 
+        const likebtn = document.querySelector("#likebtn") ; 
+        let isLike = false; 
+        // likebtn.addEventListener("click" , function() {} ) // 화살표 함수 (=>) 로 function 대체 가능 
+        likebtn.addEventListener("click" , ()=>{ 
+            isLike = !isLike ;  // 상태 토글 
+            // console.log(isLike);
+            if(isLike){
+                likebtn.textContent = "❤️좋아요" ;
+            }
+            else{
+                likebtn.textContent = "♥좋아요" ; 
+            }
+        } ) ;
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>증가 감소 연산자</title>
+  </head>
+  <body>
+    <h2 id="counter">클릭 횟수 : 0</h2>
+    <button id="indcrease">증가 (+)</button>
+    <button id="dcrease">감소 (-)</button>
+    <script>
+      let counter = document.querySelector("#counter");
+      // console.log(counter) ;
+      let indc = document.querySelector("#indcrease");
+      // console.log(indc);
+      let dcr = document.querySelector("#dcrease");
+      // 기본 값
+      let count = 0;
+      // 증가 함수
+      indc.addEventListener("click", function () {
+        // console.log("click");
+        count++;
+        // console.log(count);
+        counter.textContent = `클릭 횟수 : ${count}`;
+      });
+    // 감소 함수
+      dcr.addEventListener("click", function () {
+        count--;
+        counter.textContent = `클릭 횟수 : ${count}`;
+      });
+    </script>
+  </body>
+</html>
