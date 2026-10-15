@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> 함수 </title>
+  </head>
+  <body>
+    <button style="color: red;" onclick="sayHi()"> 클릭 </button> <br>
+    <button onclick="alert()"> 알림창 클릭 </button> <br>
+    <script>
+      function sayHi() { 
+        console.log("안녕");
+      }
+      function greet(username , age , gu ) {
+        console.log("확인");
+        
+        document.write(`${username}님 나이는 ${age} 사는 동은 ${gu} 환영합니다. <br> ` ) 
+      }
+      greet("장영우" , 20 , "동구" ) ; 
+      greet("홍길동" , 30 , "수성구" ) ; 
+      greet("김그린" , 40 , "중구" ) ;
+    </script>
+  </body>
+</html>

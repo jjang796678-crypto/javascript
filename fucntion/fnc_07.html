@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> 함수 7 </title>
+    <style> 
+      .sbumenu{
+        display: none;
+      }
+      .sbumenu.active{
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="menu"> 메뉴 1 </button>
+    <ul class="submenu">
+      <li>서브 메뉴1</li>
+      <li>서브 메뉴2</li>
+    </ul>
+    <script>
+      const menu = document.querySelector(".menu") ; 
+      const submenu = document.querySelector(".submenu") ; 
+      menu.addEventListener("click" , () => { 
+        if(submenu.classList.remove("show")){ 
+        } else { 
+          submenu.classList.add("show") ; 
+        } 
+      }) ; 
+    </script>
+  </body>
+</html>

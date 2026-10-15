@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> 함수 4-2 </title>
+  </head>
+  <body>
+    <button id="skyBtn" onclick="changecolor('skyblue')"> 하늘색 </button> <br>
+    <button id="pinkBtn" onclick="changecolor('pink')"> 분홍색 </button> <br>
+    <button id="yellowBtn" onclick="changecolor('yellow')"> 노란색 </button> <br>
+    <button id="blueBtn" onclick="changecolor('blue')"> 파란색 </button> <br>
+    <script>
+      const skyBtn = document.querySelector("#skyBtn") ; 
+      const pinkBtn = document.querySelector("#pinkBtn") ; 
+      const yellowBtn = document.querySelector("#yellowBtn") ; 
+      const blueBtn = document.querySelector("#blueBtn") ; 
+      // 색 변경 함수 
+      function changecolor( color ) { 
+        console.log(color);
+        document.body.style.backgroundColor = color ; 
+      }
+      // pinkBtn.addEventListener("click" , changecolor("pink) ) ; 
+    </script>
+  </body>
+</html>
