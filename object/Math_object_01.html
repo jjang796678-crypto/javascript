@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  배경색 변경 </title>
+    <style> 
+        body{
+            /* background-color: rgb(215,108,108); */
+        }
+    </style>
+</head>
+<body>
+    <button class="btn"> 색변경 </button>
+    <script> 
+        const btn = document.querySelector(".btn") ; 
+        // console.log(btn);
+        btn.addEventListener("click", () => { 
+            // console.log("click");
+            // rgb(255,255,255) rgb(0,0,0)
+            const rC = Math.floor(Math.random() *256) ; 
+            // console.log(r); 
+            const gC = Math.floor(Math.random() *256) ; 
+            // console.log(g); 
+            const bC = Math.floor(Math.random() *256) ; 
+            // console.log(b); 
+            const bgColor = `rgb(${rC} , ${gC} , ${bC} )` ; 
+            console.log(bgColor);
+            document.body.style.backgroundColor = bgColor ; 
+        });
+        
+    </script>
+</body>
+</html>

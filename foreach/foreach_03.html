@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> foreach 3 </title>
+    <style> 
+        ul{
+            display: flex;
+            gap: 20px;
+        }
+        li{
+            width: 200px;
+            background-color: antiquewhite;
+            padding: 20px;
+        }
+        li img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <ul id="productList"> 
+        <!-- js 출력 -->
+        <!-- <img src="images/shoes.jpg" alt=""> -->
+    </ul>
+    <script> 
+        const proList = document.querySelector("#productList") ;
+        // console.log(proList);
+        // 더미 데이터 
+        const products = [
+            { name : "티셔츠" , price : 15000 , desc : "이쁜 티셔츠" , img : "images/tshirt.jpg" } , 
+            { name : "청바지" , price : 25000 , desc : "이쁜 청바지" , img : "images/jeans.jpg" } , 
+            { name : "운동화" , price : 45000 , desc : "이쁜 운동화" , img : "images/shoes.jpg" }
+        ] ; 
+        // console.log(products);
+        // () => {} = fucntion() {}
+        products.forEach( ( item , index ) => { 
+            // console.log(item , index ) ; 
+            // console.log(item.name ) ; 
+            // console.log(item.price ) ; 
+            // console.log(item.desc ) ; 
+            proList.innerHTML += ` 
+        <li> 
+            <img src="${item.img}" alt="${item.name}">
+            <h3> 상품 이름 : ${item.name} </h3>
+            <p> 상품 설명 : ${item.desc}  </p>
+            <p> 상품 가격 : ${item.price.toLocaleString()} 원 </p>
+        </li>
+            `
+        } ) ; 
+    </script>
+</body>
+</html>
