@@ -12,7 +12,7 @@
     <h1> 현재 시각 : </h1>
     <div id="current"> 
         <!-- js 출력  -->
-        <strong> 시간 </strong>
+        
     </div>
     <script> 
         // const current = document.querySelector("#current") ; 
@@ -25,14 +25,15 @@
         function innerTxt(){ 
             // 실행코드
             // console.log("확인");
-            current.innerText = now 
+            // current.innerText = now; 
+            current.innerText = `<strong> ${now} </strong>` ; 
         }
         function innerHm(){
             // current.innerHTML = now 
             current.innerHTML = ` <strong> ${now} </strong> ` ; 
-        }
         // const innerTxt = document.querySelector() ; 
         // const innerHm = document.querySelector() ; 
+        }
     </script>
 </body>
 </html>
