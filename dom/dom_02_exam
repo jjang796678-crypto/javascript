@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 웹요소의 내용 수정 -->
+    <button onclick="innerTxt()">innerText로 표시하기</button>
+    <button onclick="innerHm()">innerHTML로 표시하기</button>
+    <h1>현재 시각:</h1>
+    <div id="current">
+      <!-- js출력 -->
+    </div>
+    <script>
+      // const current = document.querySelector("#current")
+      const current = document.getElementById("current");
+      // 요소명.innerText = 내용
+      // 요소명.innerHTML = 내용
+      const now = new Date();
+      console.log(now);
+      //innerTxt() 함수
+      function innerTxt() {
+        // 실행코드
+        // console.log("확인");
+        // current.innerText = now;
+        current.innerText = `<strong>${now}</strong>`; //<strong>Mon Oct 19 2026 10:45:38 GMT+0900 (한국 표준시)</strong>
+      }
+      function innerHm() {
+        // current.innerHTML = now
+        current.innerHTML = `<strong>${now}</strong>`; //Mon Oct 19 2026 10:46:19 GMT+0900 (한국 표준시)
+      }
+    </script>
+  </body>
+</html>

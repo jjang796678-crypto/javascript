@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 제목 </title>
+    <style> 
+        .todo {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .todo.complete{
+            color: gray;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <h2> 오늘 할 일 </h2>
+    <ul> 
+        <li class="todo"><input type="checkbox" > 청소하기 </li>
+        <li class="todo"><input type="checkbox" > 장보기 </li>
+        <li class="todo"><input type="checkbox" > 운동하기 </li>
+        <li class="todo"><input type="checkbox" > 자바스트립트 복습하기 </li>
+    </ul>
+    <script> 
+        const todos = document.querySelectorAll(".todo") 
+        console.log(todos); // NodeList 
+        todos.forEach((todo , index)=>{
+            // console.log(todo,index);
+            const checkbox = todo.querySelector("input") ; 
+            // console.log(checkbox);
+            checkbox.addEventListener("change" , ()=>{ 
+                // console.log(checkbox.checked);
+                if (checkbox.checked){ 
+                    todo.classList.add("complete");
+                }else{ 
+                    todo.classList.remove("complete");
+                }
+            })
+        })
+    </script>
+</body>
+</html>

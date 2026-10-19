@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 이벤트 </title>
+    <style> 
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1. 이벤트 연결 -->
+    <button id="btn"> 눌러보세요 </button> <br>
+    <!-- 2. 입력 이벤트 -->
+    <input type="text" id="inputName" placeholder="이름을 입력하세요."> <br>
+    <!-- 3. form 제출 이벤트 -->
+    <form id="myForm"> 
+        <input id="userEmail" type="text" placeholder="이메일을 입력하세요.">
+        <button type="submit"> 제출</button>
+    </form> <br> 
+    <!-- 4. 마우스 이벤트 -->
+    <div class="box"> </div>
+    <!-- 5. 키보드 이벤트  -->
+    <input type="text" id="keyInput" placeholder="아무 키나 눌러보세요.">
+    <script> 
+    // 1. 이벤트 연결 
+        const btn = document.querySelector("#btn"); 
+        btn.addEventListener("click" , ()=>{ 
+            console.log("click");
+            btn.style.color = "red";
+        });
+        // 2. 입력 이벤트
+        const userName = document.querySelector("#inputName"); 
+        console.log(userName);
+        userName.addEventListener("input" , ()=>{ 
+            console.log(userName.value);
+        });
+        // 3. form 제출 이벤트 
+        const farm = document.querySelector("#myForm"); 
+        const userEmail = document.querySelector("#userEmail"); 
+        farm.addEventListener("submit" , (event)=>{ 
+            console.log(event);
+            // preventDefault() : 원래 탑재 되어 있는 행동을 막아주는 메서드
+            event.preventDefault();
+            console.log("폼이 제출되었습니다.");
+            console.log(userEmail.value);
+            document.write(`${userEmail}.value`)
+        });
+        // 4. 마우스 이벤트
+        const box = document.querySelector(".box"); 
+        // box.addEventListener("mouseover" , ()=>{
+        //     box.style.backgroundColor = "orange";
+        // });
+        // box.addEventListener("mouseout" , ()=>{
+        //     box.style.backgroundColor = "aquamarine";
+        // });
+
+        if(box.addEventListener("mouseover")){ 
+            box.style.backgroundColor = "orange";
+        }else{ 
+            box.style.backgroundColor = "red";
+        };
+
+        // 5. 키보드 이벤트  
+        const keyInput = document.querySelector("#keyInput");
+            keyInput.addEventListener("keydown" , (e)=>{ 
+                console.log(e);
+                console.log(e.key);
+                console.log(e.keyCode);
+                console.log(e.location);
+            });
+        // 6. 페이지 로드 이벤트 
+        window.addEventListener("load" , ()=>{ 
+            console.log("페이지 로딩 완료!!");
+        });
+        // 7. 화면 리사이즈 이벤트 
+        window.addEventListener("resize" , ()=>{ 
+            // 화면 사이즈가 600px보다 크면 
+            if(window.innerWidth < 600 ) { 
+                box.classList.add("active");
+            }else{
+                box.classList.remove("active");
+            }
+        });
+    console.log(window.innerWidth);
+    
+    </script>
+
+</body>
+</html>

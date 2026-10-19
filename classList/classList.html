@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 클래스 리스트 1  </title>
+    <style>
+        .box{
+            width:300px ; 
+            padding:20px;
+            margin-bottom:20px;
+            background-color: antiquewhite ;
+        }
+        /* 빨간색 클래스  */
+        .red{ 
+            background-color: red;
+            color: white;
+        }
+        /* 파란색 클래스  */
+        .blue{ 
+            width: 100px;
+            font-weight: 100px;
+            background-color: blue;
+            color: white;
+            border-radius: 50%;
+            border: 5px double yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="myBox"> 안녕하세요! </div>
+    <button id="addBtn"> 빨간색 추가 </button>
+    <button id="removeBtn"> 빨간색 삭제</button>
+    <button id="toggleBtn"> 파란색 토글 </button>
+    <button id="checkBtn"> 빨간색 확인 </button>
+    <script> 
+        // html에서 요소를 가져오기 
+        const box = document.querySelector("#myBox");
+        // console.log(box);
+        const addBtn = document.querySelector("#addBtn");
+        // 추가 버튼 
+        addBtn.addEventListener("click" , () => { 
+            box.classList.add("red");
+        });
+        const removeB = document.querySelector("#removeBtn");
+        removeB.addEventListener("click" , () => { 
+            box.classList.remove("red");
+        });
+        // 더하고 삭제 
+        const toggleB = document.querySelector("#toggleBtn");
+        toggleB.addEventListener( "click" , () => { 
+            box.classList.toggle("blue");
+        }); 
+        // 클래스가 있는지 없는지 확인 
+        const checkB = document.querySelector("#checkBtn");
+        checkB.addEventListener( "click" , () => { 
+            if(box.classList.contains("red")){
+                console.log("있다");
+                box.classList.remove("red");
+            }else{
+                console.log("없다");
+                box.classList.add("red");
+            }
+        });
+    </script>
+</body>
+</html>

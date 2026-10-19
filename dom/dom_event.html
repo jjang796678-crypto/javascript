@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dom event</title>
+    <style> 
+        .imgbox img{ 
+            width: 100px;
+
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li> 회사 소개 </li>
+        <li> 제품 소개 </li>
+        <li> 고객 센터 </li>
+    </ul>
+    <div id="result"> 
+        <!-- 내가 클릭한 글자 js 출력 -->
+    </div>
+    <!-- 클릭한 이미지 크게 보이기 -->
+    <!-- 큰 이미지 -->
+    <img src="images/cup-1.png" alt="redcup" id="big">
+    <!-- 작은 이미지 -->
+    <div class="imgbox"> 
+        <img src="images/cup-1.png" alt="red">
+        <img src="images/cup-2.png" alt="blue">
+    </div>
+    <!-- 삭제 버튼 만들기  -->
+    <ul id="todo"> 
+        <li> 공부하기 <button> 삭제 </button> </li>
+        <li> 운동하기 <button> 삭제 </button> </li>
+        <li> 청소하기 <button> 삭제 </button> </li>
+    </ul>
+    <script> 
+        const menuE = document.getElementById("menu");
+        const result = document.getElementById("result");
+        menuE.addEventListener("click" , function(e) { 
+            console.log(e.target);
+            result.innerHTML = `
+            <p> 내가 클릭한 메뉴 : <span> ${e.target.innerText} </span> </p>
+            `;
+        });
+        // 작은 이미지 클릭시 큰 이미지 변경 
+        const imgbox = document.querySelector(".imgbox");
+        const imgs = document.querySelectorAll(".imgbox img");
+        console.log(imgs);
+        
+        const big = document.getElementById("big");
+        // e.target 이미지 변경 
+        // imgbox.addEventListener("click" , function(e) { 
+        //     // console.log(e.target.src);
+        //     // 큰 이미지 변경 
+        //     big.src = e.target.src
+        // }); 
+        // querySelectAll => NodeList 
+        imgs.forEach((img)=>{ 
+            console.log(img);
+            img.addEventListener("click" , function() { 
+                big.src = img.src ; 
+            });
+        });
+        // 삭제 버튼 
+        const todo = document.getElementById("todo")
+        todo.addEventListener("click" , function(e) { 
+            // console.log(e.target);
+            // console.log(e.target.tagName);
+            if(e.target.tagName === "BUTTON"){
+                e.target.parentElement.remove()
+                // console.log(e.target.parentElement);
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 키 이벤트 </title>
+    <style> 
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            margin-bottom: 20px;
+        }
+        .box1.active{ 
+            background-color: violet;
+        }
+        .box2.active{ 
+            background-color: greenyellow;
+        }
+        .box3.active{ 
+            background-color: red;
+        }
+        .box4.active{ 
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1> keyup 이벤트 </h1>
+    <div class="box box1"> box1 </div>
+    <div class="box box2"> box2 </div>
+    <div class="box box3"> box3 </div>
+    <div class="box box4"> box4 </div>
+    <script> 
+        document.addEventListener("keyup" , (e)=>{ 
+            console.log(e);
+            let kei = e.key.toLowerCase()
+            console.log(kei);
+            let box = null 
+            if(kei === "enter") {
+                box = document.querySelector(".box1");
+            }else if(kei === "shift") { 
+                box = document.querySelector(".box2");
+            }else if(kei === "g") { 
+                box = document.querySelector(".box3");
+            }else if(kei === "c") { 
+                box = document.querySelector(".box4");
+            }
+            console.log(box);
+            if (box != null) { 
+                box.classList.add("active");
+            }
+        })
+    </script>
+</body>
+</html>
