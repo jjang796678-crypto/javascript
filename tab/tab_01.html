@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 탭 기능 </title>
+    <style> 
+        .tab_btn{
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: aqua;
+        }
+        .tab_btn.active{
+            border-color: violet;
+            background-color: blueviolet;
+        }
+        .tap_content{
+            display: none;
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 80%;
+        }
+        .tap_content.active{
+            display: block; 
+        }
+    </style>
+</head>
+<body>
+    <!-- 탭 버튼 -->
+    <button class="tab_btn active"> 탭 1 </button>
+    <button class="tab_btn"> 탭 2 </button>
+    <button class="tab_btn"> 탭 3 </button>
+    <!-- 탭 내용 -->
+    <div class="tap_content active"> 탭 1 내용 </div>
+    <div class="tap_content"> 탭 2 내용 </div>
+    <div class="tap_content"> 탭 3 내용 </div>
+    <script> 
+        const tabs = document.querySelectorAll(".tab_btn") ; 
+        const contents = document.querySelectorAll(".tap_content");
+        // console.log(tabs);
+        tabs.forEach((tab, index)=>{
+            // console.log(tab, index);
+            tab.addEventListener("click" , function() {
+                // 버튼 활성화 초기화 
+                tabs.forEach((t)=>{
+                    // console.log(t);
+                    t.classList.remove("active");
+                });
+                // 내용 활성화 초기화 
+                contents.forEach((c) => {
+                    c.classList.remove("active");
+                });
+                //  해당하는 탭 활성화 
+                tab.classList.add("active") ; 
+                // 해당하는 내용 활성화 
+                //  content[index]
+                // console.log(index); // 0
+                // console.log(contnents[index]); // content[0] 내용
+                contents[index].classList.add("active") ; 
+            });
+        });
+        tabs[1].classList.add("active") ; 
+        contents[1].classList.add("active") ; 
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> forEach() map() filter() 상품관리 </title>
+    <style> 
+        button{
+            padding: 10px 16px ;
+            border: none;
+            border-radius: 6px;
+            background-color: #333;
+            color: #fff;
+        }
+        .product_list{
+            width: 90%;
+            max-width: 500px;
+            display: grid;
+            grid-template-columns:  repeat(2, 1fr);
+            gap: 12px;
+        }
+        @media (max-width : 390px ){
+            .product_list{
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1> 온라인 쇼핑몰 </h1>
+    <button id="allBtn"> 전체 상품 </button>
+    <button id="saleBtn"> 할인 가격 보기 </button>
+    <button id="filterBtn"> 5만원 이하 </button>
+    <p id="count"> 
+        <!-- js 출력  -->
+    </p>
+    <div id="productList" class="product_list"> 
+        <!-- js 출력 -->
+    </div>
+    <script> 
+        // 상품 데이터 
+        const products = [
+        { id: 1, name: "티셔츠", price: 20000, category: "의류" },
+        { id: 2, name: "청바지", price: 45000, category: "의류" },
+        { id: 3, name: "운동화", price: 80000, category: "신발" },
+        { id: 4, name: "모자", price: 15000, category: "잡화" },
+        ];
+        // html 요소 가져오기
+        const productList = document.getElementById("productList");
+        const count = document.getElementById("count");
+        const allBtn = document.getElementById("allBtn");
+        const saleBtn = document.getElementById("saleBtn");
+        const filterBtn = document.getElementById("filterBtn"); 
+        // 상품을 화면에 출력하는 공통 함수 
+        function renderProducts(items){
+            // console.log("상품 확인");
+            console.log(items); 
+            // // Array
+            items.forEach((product) => {
+                productList.innerHTML += `
+                <div class="product"> 
+                    <h3> ${product.name} </h3>
+                    <p> 분류 : ${product.category} </p>
+                    <p id="price"> ${product.price.toLocaleString()} 원</p>
+                </div>
+            `;
+            }) ; 
+        };
+    // map() 을 이용해 모든 상품 가격을 10% 할인한 새 배열 만들기 , 공통 함수 
+        function showSaleProducts(){
+            // console.log("할인 확인");
+            const saleProduct = products.map((product)=>{
+                // console.log(product);
+                return {
+                ...product ,
+                // name : product.name, 
+                // category : product.category, 
+                // price : product.price, 
+                price: product.price * 0.8 
+                };
+            });
+            // console.log(saleProduct);
+            renderProducts(saleProduct);
+            };
+    // filter() 을 이용해 5만원 이하 상품 골라서 새 배열 만들기 
+    function showCheapProducts(){
+        const cheapProducts = products.filter((product)=>{
+            // console.log("필터링");
+            return product.price <= 50000 
+        });
+        console.log(cheapProducts);
+        renderProducts(cheapProducts);
+    };
+        // renderProducts() 
+        // forEach() 사용, 전체 상품 출력 
+        allBtn.addEventListener("click" , function() { 
+            renderProducts(products);
+        });
+        // 화면 로딩 될 때 바로 출력 
+        renderProducts(products);
+        // map() 할인 적용 
+        saleBtn.addEventListener("click" , showSaleProducts)
+        // filter() 5만원 이하 적용 
+            filterBtn.addEventListener("click" , showCheapProducts)
+    </script>
+</body>
+</html>
+
