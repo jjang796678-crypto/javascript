@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> tab 2 </title>
+    <style> 
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul,
+        li {
+            list-style: none;
+        }
+        /* 메뉴 */
+        .menu{
+            width: 50%;
+            max-width: 600px;
+            display: flex;
+            margin: 50px auto;
+            background-color: antiquewhite;
+        }
+        .menu_item{
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            transition: all .3s;
+        }
+        .menu_item:hover , .menu_item.active{
+            background-color: orange;
+            cursor: pointer;
+        }
+        /* 탭 내용 */
+        .card_container{
+            width: 60%;
+            max-width: 700px;
+            margin: auto;
+        }
+        /* card = ul */
+        .card{
+            /* display: flex; */
+            display: none;
+            gap: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        .card.active {
+            display: flex;
+        }
+        .card li{
+            flex: 1;
+        }
+        .card img{
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- 탭메뉴 -->
+    <div class="menu" id="menu" > 
+        <!-- js 출력  -->
+    </div>
+    <!-- 카드 영역 -->
+    <div class="card_container" id="cardContainer"> 
+        <!-- js 출력  --> 
+    </div>
+    <script> 
+        // 더미데이터
+        const menuData = [ 
+            {title : "메뉴 1" , 
+                product : [ 
+                    { image: "images/frame1.png", name: "아메카노", price: 6000 },
+                    { image: "images/frame2.png", name: "카페라떼", price: 6500 },
+                    { image: "images/frame3.png", name: "바닐라라떼", price: 7000 },
+                ],
+            },
+            {title : "메뉴 2" , 
+                product : [ 
+                    { image: "images/frame3.png", name: "카페라떼", price: 6500 },
+                    { image: "images/frame4.png", name: "초콜릿", price: 5000 },
+                    { image: "images/frame1.png", name: "아메카노", price: 6000 },
+                ],
+            },
+            {title : "메뉴 3" , 
+                product : [ 
+                    { image: "images/frame5.png", name: "카페라떼", price: 6500 },
+                    { image: "images/frame3.png", name: "초콜릿", price: 5000 },
+                    { image: "images/frame2.png", name: "아메카노", price: 6000 },
+                ],
+            },
+        ]; 
+        // html 요소 가져오기 
+        const menu = document.querySelector("#menu");
+        const cardContainer = document.querySelector("#cardContainer");
+        // 탭 메뉴 만들기 
+        // .menu.innerHTML = menuData.map().join("")
+        menu.innerHTML = menuData
+        .map((item, index) => {
+            // console.log(item, index);
+            return `
+            <div class="menu_item ${index === 0 ? "active" : "" }" > ${item.title} </div>
+            `;
+        }) 
+        .join("");
+        // 웹 내용 만들기 
+        cardContainer.innerHTML = menuData
+        .map((item, index) =>{ 
+            return ` 
+                <ul class="card ${index === 0 ? "active" : "" }" > 
+                ${item.product.map((product) => {
+                    // console.log(product);
+                    return `
+                    <li>
+                        <img src="${product.image}" alt="${product.name}" />
+                        <h2> ${product.name} </h2>
+                    <p> 가격 : ${product.price.toLocaleString()}원 </p> 
+                    </li>
+                    `;
+                    })
+                    .join("")
+                    } 
+                </ul >
+            `;
+        })
+        .join(""); 
+        // 생성된 탭 메뉴와 탭내용 가져오기 
+        const menuItems = document.querySelectorAll(".menu_item")
+        const cards = document.querySelectorAll(".card")
+        // console.log(menuItems);
+        // console.log(cards);
+        // 탭에 맞는 카드를 보여주는 함수 
+        function showCard(index){
+            console.log(index);
+            // 모든 탭의 active 제거 
+            menuItems.forEach((item)=>{
+                // console.log(item);
+                item.classList.remove("active")
+            });
+            // 모든 탭 내용의 active 효과
+            cards.forEach((card)=>{
+                // console.log(card);
+                card.classList.remove("active")
+            });
+            // 클릭한 탭과 같은 번호의 카드 활성화 
+            menuItems[index].classList.add("active");
+            cards[index].classList.add("active");
+        }
+        // 탭 메뉴 클릭시 
+        menuItems.forEach((item,index)=>{
+            // console.log(item,index);
+            item.addEventListener("click" , function(){
+                showCard(index)
+            });
+        });
+    </script>
+</body>
+</html>
