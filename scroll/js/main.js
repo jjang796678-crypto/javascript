@@ -17,4 +17,19 @@ window.addEventListener("scroll" , () => {
             dots[index].classList.add("active");
         }
     });
+    // gotop 버튼
+    const gotopBtn = document.querySelector("#goTop")
+    console.log(document.documentElement.scrollTop);
+    if(document.documentElement.scrollTop > 600 ){
+        gotopBtn.classList.add("active");
+    }else{
+        gotopBtn.classList.remove("active");
+    }
+    //  gotop 버튼 클릭시 위로가기 함수 
+    gotopBtn.addEventListener("click" , ()=>{
+        window.scrollTo({
+            top: 0, 
+            behavior:"smooth"
+        });
+    });
 });
